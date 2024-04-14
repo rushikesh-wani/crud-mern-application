@@ -5,7 +5,7 @@ export const create = async (req, res) => {
   try {
     const userData = new user(req.body);
     if (!userData) {
-      return res.status(404).json({ msg: "User data not found" });
+      return res.status(404).json({ msg: "User data is empty" });
     }
 
     const savedData = await userData.save();
@@ -19,6 +19,7 @@ export const create = async (req, res) => {
 export const getAll = async (req, res) => {
   try {
     const userData = await user.find();
+
     if (!userData) {
       return res.status(404).json({ msg: "Users not found" });
     }

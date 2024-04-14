@@ -6,20 +6,20 @@ import { Link, useParams } from "react-router-dom";
 const ViewUser = () => {
   const { id } = useParams();
   const [userDetails, setUserDetails] = useState();
+
+  useEffect(() => {
+    getDetails();
+  }, []);
+
   const getDetails = async () => {
     await axios
       .get(`https://crud-mern-server-ezz1.onrender.com/api/getone/${id}`)
       .then((res) => {
         setUserDetails(res.data);
-        console.log(userDetails);
+        //console.log(userDetails);
       })
       .catch((err) => console.log(err));
   };
-
-  useEffect(() => {
-    getDetails();
-  }, [id]);
-
   const createdAt = new Date(userDetails?.createdAt);
   const updatedAt = new Date(userDetails?.updatedAt);
   return (

@@ -13,10 +13,11 @@ const AddUser = () => {
   const [user, setUser] = useState(userdetail);
   const navigate = useNavigate();
   const inputHandler = (e) => {
+    // console.log(e);
     const { name, value } = e.target;
     // console.log(name);
     // console.log(value);
-    // console.log(`${name} : ${value}`);
+    console.log(`${name} : ${value}`);
     setUser({ ...user, [name]: value });
     // console.log(user);
   };
